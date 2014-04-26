@@ -2,7 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class gui extends JFrame{
+public class calculator extends JFrame{
 	private JPanel mainPanel, panelB;
 	private JButton addB,subB,mulB,divB,equal,AC;
 	private JTextArea input;
@@ -172,7 +172,7 @@ public class gui extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		gui GUI  = new gui();
-		GUI.setVisible(true);
+		calculator Cal  = new calculator();
+		Cal.setVisible(true);
 	}
 }
