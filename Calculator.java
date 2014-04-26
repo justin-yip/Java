@@ -11,7 +11,7 @@ public class calculator extends JFrame{
 	private static String totalScreen = "";
 	private static String operator = "";
 		
-	public gui(){
+	public calculator(){
 		super("Calculator");
 		setSize(300,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
