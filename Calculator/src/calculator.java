@@ -19,7 +19,7 @@ public class calculator extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		
-		
+		//create elements of GUI
 		mainPanel = new JPanel();
 		screens = new JPanel();
 		panel = new JPanel();
@@ -57,6 +57,7 @@ public class calculator extends JFrame implements ActionListener{
 		b8.addActionListener(this);
 		b9.addActionListener(this);
 		
+		//set attributes for GUI elements
 		mainPanel.setLayout(new BorderLayout());
 		panel.setLayout(new GridLayout(5,4,6,6));
 		screens.setLayout(new GridLayout(2,1));
@@ -70,33 +71,36 @@ public class calculator extends JFrame implements ActionListener{
 		
 		input.setHorizontalAlignment(SwingConstants.RIGHT);
 		screen.setHorizontalAlignment(SwingConstants.RIGHT);
-		//input.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		//screen.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-				
+			
+		//method for add button	
 		addB.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						actionOperator("+");
 					}
 				});
+		//method for subtract button
 		subB.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						actionOperator("-");
 					}
 				});
+		//method for multiply button
 		mulB.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						actionOperator("x");
 					}
 				});
+		//method for division button
 		divB.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						actionOperator("/");
 					}
 				});
+		//method for equal button
 		equal.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
@@ -113,6 +117,7 @@ public class calculator extends JFrame implements ActionListener{
 						totalScreen = "";
 					}
 				});
+		//method for all clear button
 		AC.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
@@ -122,12 +127,14 @@ public class calculator extends JFrame implements ActionListener{
 						input.setText(empty);
 					}
 				});
+		//method for pi button
 		bPi.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						input.setText(Math.PI+"");
 					}
 				});
+		//method for plus/minus button
 		bSign.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
@@ -139,6 +146,7 @@ public class calculator extends JFrame implements ActionListener{
 						}
 					}
 				});
+		//method for decimal button
 		bDec.addActionListener(											
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
@@ -150,6 +158,7 @@ public class calculator extends JFrame implements ActionListener{
 						}
 					}
 				});
+		//method for delete button
 		bDel.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
@@ -160,10 +169,12 @@ public class calculator extends JFrame implements ActionListener{
 							input.setText(empty);
 					}
 				});
+		//call layout method to create GUI
 		calLayout();
 		
 		
 	}
+	//method for the buttons containing numbers
 	public void actionPerformed(ActionEvent e){
 		String value = ((JButton) e.getSource()).getActionCommand();
 		if(input.getText().equals(empty))
@@ -173,6 +184,7 @@ public class calculator extends JFrame implements ActionListener{
 		else
 			input.setText(input.getText()+value);	    
 	}
+	//method for determining each operation
 	public void actionOperator(String op){
 		if(input.getText().equals(empty)){
 			char in = ' ';
@@ -202,6 +214,7 @@ public class calculator extends JFrame implements ActionListener{
 			operator = op;
 		}
 	}
+	//method to execute the correct operation
 	public void operation(double toOp){		
 		if(operator.equals("+"))
 			totalNum += toOp;
@@ -216,67 +229,33 @@ public class calculator extends JFrame implements ActionListener{
 		else
 			System.out.print("operation doesnt exist");
 	}
+	//creates layout of frame and panels
 	public void calLayout(){
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		
-		
-		//gbc.gridwidth = 4;
-		//gbc.gridx = 0;
-		//gbc.gridy = 0;
 		panel.add(screen);
-		//gbc.gridy = 1;
 		panel.add(input);
 		
-		//gbc.gridwidth = 1;
-		//gbc.gridy = 1;
-		//gbc.gridx = 0;
 		panel.add(AC,gbc);
-		//gbc.gridx = 1;
 		panel.add(bSign,gbc);
-		//gbc.gridx = 2;
 		panel.add(bDel,gbc);
-		//gbc.gridx = 3;
 		panel.add(divB,gbc);
-		
-		//gbc.gridy = 3;
-		//gbc.gridx = 0;
 		panel.add(b7,gbc);
-		//gbc.gridx = 1;
 		panel.add(b8,gbc);
-		//gbc.gridx = 2;
 		panel.add(b9,gbc);
-		//gbc.gridx = 3;
 		panel.add(mulB,gbc);
-		
-		//gbc.gridy = 4;
-		//gbc.gridx = 0;
 		panel.add(b4,gbc);
-		//gbc.gridx = 1;
 		panel.add(b5,gbc);
-		//gbc.gridx = 2;
 		panel.add(b6,gbc);
-		//gbc.gridx = 3;
 		panel.add(subB,gbc);
-		
-		//gbc.gridy = 5;
-		//gbc.gridx = 0;
 		panel.add(b1,gbc);
-		//gbc.gridx = 1;
 		panel.add(b2,gbc);
-		//gbc.gridx = 2;
 		panel.add(b3,gbc);
-		//gbc.gridx = 3;
 		panel.add(addB,gbc);
-		
-		//gbc.gridy = 6;
-		//gbc.gridx = 0;
 		panel.add(b0,gbc);
-		//gbc.gridx = 1;
 		panel.add(bDec,gbc);
-		///gbc.gridx = 2;
 		panel.add(bPi,gbc);
-		//gbc.gridx = 3;
 		panel.add(equal,gbc);
 		
 		screens.add(screen);
@@ -284,8 +263,8 @@ public class calculator extends JFrame implements ActionListener{
 		mainPanel.add(screens, BorderLayout.NORTH);
 		mainPanel.add(panel, BorderLayout.CENTER);
 		add(mainPanel);
-		//add(panel);
 	}
+	//reads input from calculator screen
 	public double stringToInt(){
 		double numInput = 0;
 		double position;
@@ -325,7 +304,7 @@ public class calculator extends JFrame implements ActionListener{
 			numInput = 0-numInput;
 		return numInput;
 	}
-	
+	//main method
 	public static void main(String[] args) {
 		calculator GUI  = new calculator();
 		GUI.setVisible(true);
